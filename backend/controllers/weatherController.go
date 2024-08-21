@@ -1,5 +1,4 @@
-// services/weather_service.go
-package services
+package controllers
 
 import (
 	"fmt"
@@ -32,7 +31,7 @@ func GetCityWeather(cityName string) (*models.WeatherData, error) {
 		return nil, fmt.Errorf("error finding city %v: %v", cityName, err)
 	}
 
-	if time.Since(weather.Timestamp) > 30*time.Minute {
+	if time.Since(weather.UpdatedAt) > 30*time.Minute {
 		weatherFromAPI, err := fetchWeatherFromAPI(cityName)
 		if err != nil {
 			return nil, err
@@ -87,7 +86,6 @@ func fetchWeatherFromAPI(cityName string) (*models.WeatherData, error) {
 		weather.Temperature = float32(weatherFromAPI.List[0].Main.Temp - 273.15)
 		weather.Description = weatherFromAPI.List[0].Weather[0].Description
 		weather.Icon = weatherFromAPI.List[0].Weather[0].Icon
-		weather.Timestamp = time.Now()
 	} else {
 		return nil, fmt.Errorf("no weather data found in API response")
 	}
