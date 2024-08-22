@@ -31,7 +31,7 @@ type APIResponse struct {
 	} `json:"city"`
 }
 
-type WeatherResponse struct {
+type WeatherDTO struct {
 	City        string    `json:"city"`
 	Temperature float32   `json:"temperature"`
 	Description string    `json:"description"`

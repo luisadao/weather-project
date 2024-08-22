@@ -17,7 +17,7 @@ func GetCityWeather(c *gin.Context) {
 		return
 	}
 
-	response := models.WeatherResponse{
+	response := models.WeatherDTO{
 		City:        weather.City,
 		Temperature: weather.Temperature,
 		Description: weather.Description,
@@ -35,17 +35,18 @@ func GetAllCitiesWeatherHandler(c *gin.Context) {
 		return
 	}
 
-	var allWeatherResponses []models.WeatherResponse
+	var allWeatherDTOs []models.WeatherDTO
 	for _, weather := range allWeatherData {
-		response := models.WeatherResponse{
+		response := models.WeatherDTO{
 			City:        weather.City,
 			Temperature: weather.Temperature,
 			Description: weather.Description,
 			Icon:        weather.Icon,
 			Timestamp:   weather.UpdatedAt,
 		}
-		allWeatherResponses = append(allWeatherResponses, response)
+		allWeatherDTOs = append(allWeatherDTOs, response)
 	}
 
-	c.JSON(http.StatusOK, allWeatherResponses)
+	c.JSON(http.StatusOK, allWeatherDTOs)
+
 }
