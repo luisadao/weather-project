@@ -1,17 +1,40 @@
 <script setup>
 import axios from 'axios'
-    const props = defineProps(['weather'])
+import { ref, onMounted, watch } from 'vue'
+import { useToast } from 'vue-toastification'
 
-    const formattedTime = (time) => {
-      return new Date(time).toLocaleString();
-    }
-    const API_URL = 'http://localhost:8080/weather'
-    const ICON_URL = `https://openweathermap.org/img/wn/10d@2x.png`
-    const fetchWeather = async (weather) => {
+const props = defineProps(['weather'])
+const toast = useToast()
+
+const formattedTime = (time) => {
+    return new Date(time).toLocaleString();
+}
+const API_URL = 'http://localhost:8080/weather'
+const iconUrl = ref('')
+
+const updateIcon = (icon) => {
+    iconUrl.value = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+}
+
+watch(() => props.weather, (newWeather) => {
+  if (newWeather && newWeather.icon) {
+    updateIcon(newWeather.icon);
+  }
+}, { immediate: true });
+
+const fetchWeather = async (weather) => {
     try {
         const response = await axios.get(`${API_URL}/${weather.city}`)
+
         weather.value = response.data
+        updateIcon(response.data.icon);
+
+        toast.success(`Weather in ${weather.city} updated`)
+
+        
+
     } catch (error) {
+        toast.error("There was an error updating the weather")
         console.log(error)
     }
 }
@@ -22,23 +45,22 @@ import axios from 'axios'
     <div class="mt-3 d-flex">
         <div class="flex-shrink-1">
             <h5>{{ weather.city }}</h5>
-            <!-- TODO: Fix url da imagem -->
-            <img :src="ICON_URL">
+            <img :src="iconUrl">
             <p>{{ weather.description }}</p>
             <p>{{ weather.temperature }}°</p>
             <p>{{ formattedTime(weather.timestamp) }}</p>
-            <button @click="fetchWeather(weather)" type="button" class="btn btn-success">Update time</button>
+            <button @click="fetchWeather(weather)" type="button" class="btn btn-success">Update weather</button>
         </div>
-        
+
     </div>
 </template>
 
 <style scoped>
 .dashboard {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
 }
 </style>
