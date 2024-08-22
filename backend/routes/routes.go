@@ -21,10 +21,9 @@ func SetupRouter() *gin.Engine {
 		AllowCredentials: true,
 		MaxAge:           12 * time.Hour,
 	}))
-
-	r.GET("weather/:cityName", handlers.GetCityWeather)
-
-	r.GET("/weather", handlers.GetAllCitiesWeatherHandler)
+	// Should be grouped
+	r.GET("weather/:cityName", middleware.RequireAuth, handlers.GetCityWeather)
+	r.GET("/weather", middleware.RequireAuth, handlers.GetAllCitiesWeatherHandler)
 
 	r.POST("/signup", controllers.Signup)
 	r.POST("/login", controllers.Login)
