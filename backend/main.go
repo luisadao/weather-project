@@ -20,8 +20,7 @@ func init() {
 func main() {
 
 	database.ConnectToDB()
-	//Map cityCodes to City
-
+	database.DB.AutoMigrate(&models.User{})
 	database.DB.AutoMigrate(&models.WeatherData{})
 
 	fmt.Println("Connected!")

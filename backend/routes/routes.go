@@ -5,7 +5,9 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/luisadao/weather-project/controllers"
 	"github.com/luisadao/weather-project/handlers"
+	"github.com/luisadao/weather-project/middleware"
 )
 
 func SetupRouter() *gin.Engine {
@@ -23,6 +25,10 @@ func SetupRouter() *gin.Engine {
 	r.GET("weather/:cityName", handlers.GetCityWeather)
 
 	r.GET("/weather", handlers.GetAllCitiesWeatherHandler)
+
+	r.POST("/signup", controllers.Signup)
+	r.POST("/login", controllers.Login)
+	r.GET("/validate", middleware.RequireAuth, controllers.Validate)
 
 	return r
 }

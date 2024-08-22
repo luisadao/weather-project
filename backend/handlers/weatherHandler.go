@@ -8,7 +8,6 @@ import (
 	"github.com/luisadao/weather-project/models"
 )
 
-// GetCityWeather is the route handler to get weather data for a specific city.
 func GetCityWeather(c *gin.Context) {
 	cityName := c.Param("cityName")
 
@@ -30,7 +29,6 @@ func GetCityWeather(c *gin.Context) {
 }
 
 func GetAllCitiesWeatherHandler(c *gin.Context) {
-	// Retrieve weather data for all cities
 	allWeatherData, err := controllers.GetAllCitiesWeather()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve weather data"})
@@ -50,5 +48,4 @@ func GetAllCitiesWeatherHandler(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, allWeatherResponses)
-
 }
