@@ -19,6 +19,7 @@ const router = createRouter({
       path: '/register',
       component : Register
     },
+    
     {
       path: '/about',
       name: 'about',
@@ -29,6 +30,6 @@ const router = createRouter({
     }
   ]
 })
-
+// TODO - Add middleware to home route
 
 export default router
