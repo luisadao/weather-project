@@ -11,7 +11,11 @@ The frontend is a very basic Vue.js just to consume the API.
 ## Backend:
 - Ensure that you have mysql installed on your system
 - Use the .env provided for the backend
-- Source the create-tables.sql file to your database
+- Source the create-tables.sql file to your database example: 
+    - 1:`mysql -u root -p`
+    - 2:`create database weather;`
+    - 3:`use weather;`
+    - 4:`source path/create-tables.sql`
 - Inside the backend directory run `make run` to run the project
 
 ## Frontend:
