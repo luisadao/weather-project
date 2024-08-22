@@ -1,14 +1,19 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type WeatherData struct {
-	ID          int64
+	gorm.Model
+	ID          uint      `gorm:"primaryKey"`
 	City        string    `json:"city"`
 	Temperature float32   `json:"temperature"`
 	Description string    `json:"description"`
 	Icon        string    `json:"icon"`
-	Timestamp   time.Time `json:"timestamp"`
+	UpdatedAt   time.Time `json:"updateAt"`
 }
 
 type APIResponse struct {
@@ -24,4 +29,12 @@ type APIResponse struct {
 	City struct {
 		Id int32 `json:"id"`
 	} `json:"city"`
+}
+
+type WeatherResponse struct {
+	City        string    `json:"city"`
+	Temperature float32   `json:"temperature"`
+	Description string    `json:"description"`
+	Icon        string    `json:"icon"`
+	Timestamp   time.Time `json:"timestamp"`
 }

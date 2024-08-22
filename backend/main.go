@@ -6,6 +6,7 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/luisadao/weather-project/database"
+	"github.com/luisadao/weather-project/models"
 	"github.com/luisadao/weather-project/routes"
 )
 
@@ -19,7 +20,8 @@ func init() {
 func main() {
 
 	database.ConnectToDB()
-	//Map cityCodes to City
+	database.DB.AutoMigrate(&models.User{})
+	database.DB.AutoMigrate(&models.WeatherData{})
 
 	fmt.Println("Connected!")
 
