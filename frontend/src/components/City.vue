@@ -54,15 +54,54 @@ const fetchWeather = async (weather) => {
 <style scoped>
 .dashboard {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
     gap: 20px;
     justify-content: center;
     padding: 20px;
+    
 }
 
-.img{
+.img {
     border: 1px solid grey;
     border-radius: 5px;
     background-color: lightgrey;
+    margin-bottom: 10px; 
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; 
+}
+
+.flex-shrink-1 {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    padding: 1rem; 
+    border: 1px solid lightgrey; 
+    border-radius: 8px; 
+    background-color: #f9f9f9; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+h5 {
+    margin-bottom: 0.5rem; 
+}
+
+p {
+    margin: 0.5rem 0; 
+}
+
+.btn {
+    padding: 0.5rem 1rem; 
+    border: none; 
+    border-radius: 4px; 
+    background-color: #28a745; 
+    color: white; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.btn:hover {
+    background-color: #218838; 
 }
 </style>

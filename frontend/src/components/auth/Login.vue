@@ -56,63 +56,63 @@ const login = async () => {
 <style scoped>
 .auth-container {
   max-width: 400px;
-  margin: 2rem auto; /* Center the container and add vertical spacing */
+  margin: 2rem auto; 
   padding: 2rem;
-  background-color: #f9f9f9; /* Light background color for the form container */
-  border-radius: 8px; /* Rounded corners for the container */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: #f9f9f9; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .auth-header {
-  text-align: center; /* Center align the header text */
-  margin-bottom: 1.5rem; /* Add spacing below the header */
-  color: #333; /* Darker text color for better readability */
+  text-align: center; 
+  margin-bottom: 1.5rem; 
+  color: #333; 
 }
 
 form {
   display: flex;
-  flex-direction: column; /* Arrange form elements in a column */
+  flex-direction: column; 
 }
 
 form div {
-  margin-bottom: 1rem; /* Space between form fields */
+  margin-bottom: 1rem; 
 }
 
 label {
-  display: block; /* Ensure labels take full width */
-  margin-bottom: 0.5rem; /* Space between label and input */
-  font-weight: bold; /* Bold labels for better emphasis */
+  display: block; 
+  margin-bottom: 0.5rem; 
+  font-weight: bold; 
 }
 
 input {
-  width: 100%; /* Full width for input fields */
-  padding: 0.75rem; /* Padding inside the input fields */
-  border: 1px solid #ccc; /* Light border for input fields */
-  border-radius: 4px; /* Rounded corners for input fields */
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  width: 100%; 
+  padding: 0.75rem; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
 }
 
 button {
-  padding: 0.75rem 1.5rem; /* Padding inside the button */
-  border: none; /* Remove default border */
-  border-radius: 4px; /* Rounded corners for the button */
-  background-color: #007bff; /* Primary button color */
-  color: #fff; /* White text color */
-  font-size: 1rem; /* Font size for button text */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  padding: 0.75rem 1.5rem; 
+  border: none; 
+  border-radius: 4px; 
+  background-color: #007bff; 
+  color: #fff; 
+  font-size: 1rem; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3; 
 }
 
 p {
-  text-align: center; /* Center align the text */
-  color: #666; /* Lighter text color for error messages */
+  text-align: center; 
+  color: #666; 
 }
 
 .auth-register {
-  margin-top: 1rem; /* Space above the registration link */
+  margin-top: 1rem; 
 }
 </style>
