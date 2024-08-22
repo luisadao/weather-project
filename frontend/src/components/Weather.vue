@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import City from './City.vue';
 import HeaderBar from './HeaderBar.vue';
@@ -20,7 +20,7 @@ const fetchWeather = async () => {
 onMounted(async () => {
     await fetchWeather()
     toast.success("Weather Updated")
-    console.log(weathers.value)
+    //console.log(weathers.value)
 })
 
 
@@ -61,7 +61,7 @@ onMounted(async () => {
 
 .header {
   width: 100%;
-  background-color: #003366; /* Dark blue color */
+  background-color: #003366; 
   color: white;
   padding: 1rem;
   display: flex;
@@ -79,7 +79,7 @@ onMounted(async () => {
 }
 
 .logout-button {
-  background-color: #ff4d4d; /* Red color for logout button */
+  background-color: #ff4d4d; 
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -89,11 +89,11 @@ onMounted(async () => {
 }
 
 .logout-button:hover {
-  background-color: #e60000; /* Darker red color on hover */
+  background-color: #e60000; 
 }
 
 main {
-  margin-top: 4rem; /* Add margin to offset the fixed header */
+  margin-top: 4rem; 
 }
 
 </style>
