@@ -97,3 +97,8 @@ func Validate(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": user.(models.User).Name})
 }
+
+func Logout(c *gin.Context) {
+	c.SetCookie("Authorization", "", -1, "", "", false, true)
+	c.JSON(http.StatusOK, gin.H{"message": "Logged out successfully"})
+}
