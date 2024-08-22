@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios'
-import { ref, onMounted, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useToast } from 'vue-toastification'
 
 const props = defineProps(['weather'])
@@ -25,13 +25,9 @@ watch(() => props.weather, (newWeather) => {
 const fetchWeather = async (weather) => {
     try {
         const response = await axios.get(`${API_URL}/${weather.city}`)
-
         weather.value = response.data
         updateIcon(response.data.icon);
-
         toast.success(`Weather in ${weather.city} updated`)
-
-        
 
     } catch (error) {
         toast.error("There was an error updating the weather")
@@ -45,7 +41,7 @@ const fetchWeather = async (weather) => {
     <div class="mt-3 d-flex">
         <div class="flex-shrink-1">
             <h5>{{ weather.city }}</h5>
-            <img :src="iconUrl">
+            <img :src="iconUrl" class="img">
             <p>{{ weather.description }}</p>
             <p>{{ weather.temperature }}°</p>
             <p>{{ formattedTime(weather.timestamp) }}</p>
@@ -62,5 +58,11 @@ const fetchWeather = async (weather) => {
     gap: 20px;
     justify-content: center;
     padding: 20px;
+}
+
+.img{
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: lightgrey;
 }
 </style>
